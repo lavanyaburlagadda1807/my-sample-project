@@ -1,5 +1,1 @@
-Build and simialr to Amazon
- ------------------------------------ 
-Build Cart Details Page
- ------------------------------------ 
-please change theme of the app
+Build An app with authentication and after login user should see a code playground for HTML, CSS and JS
