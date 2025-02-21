@@ -1,19 +1,26 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import Product from './pages/Product';
-import Cart from './pages/Cart';
-import Checkout from './pages/Checkout';
+import React from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import { AuthProvider } from './context/AuthContext'
+import PrivateRoute from './components/PrivateRoute'
+import Login from './pages/Login'
+import Register from './pages/Register'
+import Playground from './pages/Playground'
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/product/:id" element={<Product />} />
-      <Route path="/cart" element={<Cart />} />
-      <Route path="/checkout" element={<Checkout />} />
-    </Routes>
-  );
+    <AuthProvider>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/playground" element={
+          <PrivateRoute>
+            <Playground />
+          </PrivateRoute>
+        } />
+        <Route path="/" element={<Navigate to="/playground" replace />} />
+      </Routes>
+    </AuthProvider>
+  )
 }
 
-export default App;
+export default App
